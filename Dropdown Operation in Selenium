@@ -1,0 +1,60 @@
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+
+
+public class HomePage {
+	static WebDriver driver;
+
+	public static void main(String[] args)  {
+		int i=10;
+		driver = new ChromeDriver();
+		driver.get("https://www.hyrtutorials.com/p/html-dropdown-elements-practice.html");//Dropdowns
+		WebElement ed=driver.findElement(By.xpath("//select[@id='ide']"));
+		Select dropdown= new Select(ed);
+		dropdown.selectByVisibleText("Eclipse");
+		dropdown.selectByVisibleText("IntelliJ IDEA");
+		dropdown.selectByVisibleText("Visual Studio");
+		System.err.println("print all selected options");
+		List<WebElement>allSelectedoptions=dropdown.getAllSelectedOptions();
+		for(WebElement el:allSelectedoptions) {
+			
+			System.out.println(el.getText());
+		}
+		System.err.println("Print is Dropdown multipule or not");
+		System.out.println("-------------------------");
+		 boolean a=dropdown.isMultiple();
+		 System.out.println(a);
+		 System.out.println("-------------------------");
+		 System.err.println("Print all the options are avilable in the drop down");
+		 List<WebElement>alloptions=dropdown.getOptions();
+		 for(WebElement el:alloptions) {
+			 System.out.println(el.getText());
+		 }
+		 //driver.close();
+		
+	}
+}
+
+
+
+
+
+
+
+
