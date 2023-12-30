@@ -1,0 +1,18 @@
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
+public class HomePage {
+static WebDriver driver;
+	public static void main(String[] args)  {
+		driver = new ChromeDriver();
+		driver.get("https://eudyam.com/udyam?msclkid=ecc11dbcbecc12835ef3782ca3eec711&utm_source=bing&utm_medium=cpc&utm_campaign=MSME%20Maharashtra&utm_term=udyam%20portal&utm_content=Udyam%20Registration");
+		List <WebElement> totalradiobuttons=driver.findElements(By.xpath("//input[@type='radio']"));
+		System.out.println(" Total number of radio buttons==" +totalradiobuttons.size());
+}
+}
